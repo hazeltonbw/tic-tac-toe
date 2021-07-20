@@ -1,6 +1,6 @@
 # tic-tac-toe in C++
 ### To play game:
-1. Compile with g++ or your favorite C++ compiler
+1. Compile with g++ (--std=c++11 or higher) or your favorite C++ compiler
 ```sh
 g++ main.cc -o tic-tac-toe
 ```
