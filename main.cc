@@ -100,7 +100,7 @@ class Game {
 		cout << endl;
 		while (1) {
 			cout << "Where would you like to place an ";
-			cout << *player << " ? (Pick 1-9)" << endl;
+			cout << *player << " ?\t(Pick 1-9)" << endl;
 			printBoard();
 			int number = 0;
 			cin >> number;
@@ -122,7 +122,7 @@ class Game {
 						// this next line is really interesting, try to figure it out before going to stackoverflow link
 						cout << last_winner << " has won " << (last_winner == X ? + ++X_score : + ++O_score) << " time(s)\n"; // https://stackoverflow.com/questions/19562103/uint8-t-cant-be-printed-with-cout
 						// basically the scores are being converted to an int for the cout statement	
-						cout << "Would you like to play again? (Y)es or press any other key to exit.\n";
+						cout << "Would you like to play again?\t(Y)es or press any other key to exit.\n";
 						cin >> input;
 						if (input.size() < 1) die();
 						if (toupper(input[0]) != 'Y') break;
