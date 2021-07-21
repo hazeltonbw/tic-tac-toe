@@ -30,10 +30,25 @@ class Game {
 	void printBoard() {
 		for (int i = 0; i < board.size(); i++) {
 			for (int j = 0; j < board[i].size(); j++){
-				if (j < ROWS - 1) 
-					cout << board[i][j] << "|";
-				else cout << board[i][j];
-			}
+                char * spot = &board[i][j];
+                int number = i*ROWS+j+1;
+				if (j < ROWS - 1) { 
+                    if (*spot == OPEN) {
+                        cout << +number << "|";
+                    }
+                    else{
+                        cout << *spot << "|"; 
+                    }
+                }
+                else {
+                    if (*spot == OPEN){
+                        cout << +number;
+                    }
+                    else {
+                        cout << *spot;
+                    }
+                }
+            }
 			cout << endl;
 			if (i < 2)
 				cout << "-+-+-" << endl;
@@ -99,15 +114,7 @@ class Game {
 			if (*spot == OPEN) {
 				*spot = *player;
 				moves_made++;
-				if (moves_made == 9) {
-					printBoard();
-					cout << "Tie game! Play again?\t(Y)es or press any other key to exit.\n";
-					cin >> input;
-					if (input.size() < 1) die();
-					if (toupper(input[0]) != 'Y') break;
-					setupBoard();
-				}
-				else if (moves_made > 4) {
+				if (moves_made > 4) {
 					last_winner = checkForWinner();
 					if (last_winner != OPEN) {
 						printBoard();
@@ -121,6 +128,14 @@ class Game {
 						if (toupper(input[0]) != 'Y') break;
 						setupBoard();
 					} 
+				}
+                if (moves_made == 9) {
+					printBoard();
+					cout << "Tie game! Play again?\t(Y)es or press any other key to exit.\n";
+					cin >> input;
+					if (input.size() < 1) die();
+					if (toupper(input[0]) != 'Y') break;
+					setupBoard();
 				}
 				player = *player == X ? &O : &X;
 			}
